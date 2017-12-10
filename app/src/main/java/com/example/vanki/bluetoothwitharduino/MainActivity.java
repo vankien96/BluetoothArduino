@@ -22,7 +22,7 @@ import java.util.Set;
 import java.util.UUID;
 
 public class MainActivity extends AppCompatActivity {
-    Button btnChoose,btnLocation,btnTime;
+    Button btnChoose,btnLocation,btnTime,btnWifi;
     TextView txtShow;
 
     public static BluetoothAdapter btAdapter;
@@ -46,6 +46,7 @@ public class MainActivity extends AppCompatActivity {
         txtShow.setText("Device is not connected");
         btnTime.setEnabled(false);
         btnLocation.setEnabled(false);
+        btnWifi.setEnabled(false);
         btAdapter = BluetoothAdapter.getDefaultAdapter();
     }
 
@@ -113,6 +114,7 @@ public class MainActivity extends AppCompatActivity {
         btnTime.setEnabled(true);
         btnLocation.setEnabled(true);
         btnChoose.setEnabled(false);
+        btnWifi.setEnabled(true);
         txtShow.setText("Device is connected");
     }
 
@@ -135,6 +137,13 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent i = new Intent(MainActivity.this,SetLocationActivity.class);
+                startActivity(i);
+            }
+        });
+        btnWifi.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(MainActivity.this,SetWifi.class);
                 startActivity(i);
             }
         });
@@ -179,6 +188,7 @@ public class MainActivity extends AppCompatActivity {
         btnTime = (Button) findViewById(R.id.btnTime);
         btnLocation = (Button) findViewById(R.id.btnLocation);
         txtShow = (TextView) findViewById(R.id.txtShow);
+        btnWifi = (Button) findViewById(R.id.btnWifi);
     }
 
 
